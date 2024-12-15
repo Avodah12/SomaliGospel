@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Request</title>
+    <style>
+        .prayer-container {
+            width: 100%;
+            max-width: 800px; /* Increased max-width to make the container wider */
+            margin: 50px auto;
+            padding: 40px; /* Increased padding for more space inside the form */
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .prayerh2 {
+            font-size: 24px; /* Increased font size for the heading */
+            color: #333;
+            margin-bottom: 30px; /* Increased margin below the heading */
+            text-align: center; /* Centers the title */
+        }
+
+        .prayer-request-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers form items */
+        }
+
+        .input-group {
+            margin-bottom: 20px; /* Increased space between input fields */
+            text-align: left;
+            width: 90%; /* Increased width for inputs */
+            max-width: 700px; /* Ensures inputs are wider but not too wide */
+        }
+
+        .input-group label {
+            font-size: 16px; /* Increased font size for labels */
+            color: #555;
+            margin-bottom: 10px; /* Increased margin for labels */
+        }
+
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 12px 16px; /* Increased padding for a larger input field */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px; /* Increased font size */
+            color: #333;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+            resize: none;
+        }
+
+        #prayer-request {
+            resize: none;
+            padding-top: 12px; /* Adjust padding to move text closer to the top */
+            line-height: 1.5; /* Adjust line height for better text alignment */
+            vertical-align: top;
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            border-color: #b2261f;
+            background-color: #fff;
+        }
+
+        .submit-button {
+            padding: 12px 30px; /* Increased padding for a larger button */
+            font-size: 18px; /* Larger font size for the button */
+            color: #fff;
+            background-color: #b2261f;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: auto; /* Ensures the button does not stretch to the full width */
+            margin: 20px auto; /* Center the button with margin */
+        }
+
+        .submit-button:hover {
+            background-color: #9b1d1b;
+        }
+
+        .submit-button:active {
+            background-color: #8c1616;
+        }
+
+    </style>
+</head>
+<body>
+    {% include 'main_app/base.html' %}
+
+    <section class="prayer-request-section">
+        <div class="prayer-container">
+            <h2 class="prayerh2">Submit Your Prayer Request</h2>
+            <form method="POST" class="prayer-request-form">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full_name" 
+                           placeholder="Enter your full name" required 
+                           value="{{ form.full_name.value|default_if_none:'' }}">
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" 
+                           placeholder="Enter your email" required 
+                           value="{{ form.email.value|default_if_none:'' }}">
+                </div>
+                <div class="input-group">
+                    <label for="prayer-request">Prayer Request</label>
+                    <textarea id="prayer-request" name="prayer_request" 
+                              placeholder="Share your prayer request" rows="6" required>
+                        {{ form.prayer_request.value|default_if_none:'' }}
+                    </textarea>
+                </div>
+                <button type="submit" class="submit-button">Submit Request</button>
+            </form>
+        </div>
+    </section>
+    {% include 'main_app/footer.html' %}
+</body>
+</html>

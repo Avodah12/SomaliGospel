@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More News</title>
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+</head>
+<body>
+    {% include 'main_app/base.html' %}
+    <section class="more-news-page">
+        <div class="container">
+            <h1 class="page-title">More News</h1>
+            <div class="news-grid">
+                {% for news in news %}
+                    <!-- Large Featured News Card -->
+                    {% if forloop.counter0 == 0 %}
+                        <div class="news-card large">
+                            <img src="{{ news.image.url }}" alt="News Image" class="news-card-img">
+                            <div class="news-card-content">
+                                <h3 class="news-card-title"> {{ news.title }}</h3>
+                                
+                                <p class="news-card-date">{{ news.published_date|date:"F j, Y" }}</p>
+                                <p class="news-card-description">{{ news.content }}</p>
+                                <a href="#" class="news-card-btn">Read More</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <!-- Smaller News Cards -->
+                        <div class="news-card">
+                            <img src="{{ news.image.url }}" alt="News Image" class="news-card-img">
+                            <div class="news-card-content">
+                                <h3 class="news-card-title"> {{ news.title }}</h3>
+                                <span class="news-card-date">{{news.published_date.date}}</span>
+                                <p class="news-card-description">{{ news.content }}</p>
+                                <a href="#" class="news-card-btn">Read More</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% include 'main_app/footer.html' %}
+</body>
+</html>

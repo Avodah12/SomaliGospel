@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    label {
+      font-weight: bold;
+      color: #555;
+    }
+    input, select, textarea, button {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: 100%;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #b2261f;
+      outline: none;
+      box-shadow: 0 0 3px #b2261f;
+    }
+    button {
+      background-color: #b2261f;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      padding: 12px;
+    }
+    button:hover {
+      background-color: #d1372a;
+    }
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  {% include 'main_app/base.html' %}
+  <div class="container">
+    <h1>Registration</h1>
+    <form method="post">
+      {% csrf_token %}
+      
+      <!-- Render form fields manually for full control -->
+      <label for="id_full_name">Full Name</label>
+      {{ form.full_name }}
+      {% if form.full_name.errors %}
+        <div class="error-message">
+          {% for error in form.full_name.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <label for="id_email">Email</label>
+      {{ form.email }}
+      {% if form.email.errors %}
+        <div class="error-message">
+          {% for error in form.email.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <label for="id_phone">Phone Number</label>
+      {{ form.phone }}
+      {% if form.phone.errors %}
+        <div class="error-message">
+          {% for error in form.phone.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <label for="id_category">Registering for</label>
+      {{ form.category }}
+      {% if form.category.errors %}
+        <div class="error-message">
+          {% for error in form.category.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <label for="id_additional_details">Additional Details</label>
+      {{ form.additional_details }}
+      {% if form.additional_details.errors %}
+        <div class="error-message">
+          {% for error in form.additional_details.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  {% include 'main_app/footer.html' %}
+</body>
+</html>

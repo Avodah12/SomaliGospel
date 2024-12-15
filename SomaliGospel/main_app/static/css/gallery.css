@@ -1,0 +1,148 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Category list styling */
+.category-list {
+    padding: 20px;
+    background-color: #fff;
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    flex-direction: column;  /* Stack items vertically */
+    text-align: center;      /* Center text */
+}
+
+.category-list h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.category-list ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    justify-content: center; /* Center categories horizontally */
+    margin: 0;
+    text-decoration: none;
+}
+
+.category-list li {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #b2261f;
+}
+
+.category-link {
+    font-size: 1rem;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.category-link:hover {
+    background-color: #af322c;
+}
+
+/* Gallery styles */
+.gallery {
+    padding: 20px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.image-item {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image-title {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Hover effect */
+
+/* Video Section Styling */
+.video-section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.video-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.video-item {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.video-title {
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.video-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.video-item video:hover {
+    opacity: 0.8;
+}
