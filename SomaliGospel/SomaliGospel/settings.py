@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-ev@_fyzuo@1suxbav$)$)rkckxnamr+0j6fo88pukj*6-%kmo_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://somali-gospel.vercel.app/']
 
 
 # Application definition
